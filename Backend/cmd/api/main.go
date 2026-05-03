@@ -2,6 +2,7 @@ package main
 
 import (
 	"bibliotheca/internal/config"
+	"bibliotheca/internal/database"
 	"bibliotheca/pkg/mysqlclient"
 	"fmt"
 	"log"
@@ -22,9 +23,15 @@ func main() {
 
 	// jwtSecret := cfg.JWTSecret
 
-	_, err = mysqlclient.ConnectMySqlClient(cfg)
+	db, err := mysqlclient.ConnectMySqlClient(cfg)
 	if err != nil {
 		log.Fatalf("Failed to connect to MySql client: %v", err)
+	}
+
+	defer db.Close()
+
+	if err := database.RunMigration(db, "./migrations"); err != nil {
+		log.Fatalf("Migration error: %v", err)
 	}
 
 	r.Use(gin.Logger())
