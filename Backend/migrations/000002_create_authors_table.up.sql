@@ -12,4 +12,4 @@ CREATE TABLE IF NOT EXISTS authors(
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     INDEX idx_name (first_name, last_name),
     INDEX idx_email (email)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

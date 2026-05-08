@@ -11,4 +11,4 @@ CREATE TABLE IF NOT EXISTS refresh_tokens (
     UNIQUE KEY uq_refresh_token (refresh_token),
     INDEX idx_refresh_tokens_user_id (user_id),
     INDEX idx_refresh_tokens_expires_at (expires_at)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

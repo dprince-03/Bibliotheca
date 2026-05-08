@@ -15,4 +15,4 @@ CREATE TABLE IF NOT EXISTS borrows_records (
     INDEX idx_borrows_book_id (book_id),
     INDEX idx_borrows_status (status),
     INDEX idx_borrows_due_at (due_at)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
